@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-    # before_action :set_user, only: [:show,:update,:destroy]
+    before_action :set_user, only: [:show,:update,:destroy]
 
   def index
     users = User.all
@@ -27,8 +27,8 @@ class Api::V1::UsersController < ApplicationController
   end
 
   private
-  def user_params
-    params.permit(:name)
+  def user_params(*args)
+    params.require(:user).permit(*args)
   end
 
   def set_user

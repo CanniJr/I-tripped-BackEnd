@@ -9,6 +9,8 @@
 # Trial username
 
 User.destroy_all
+Trip.destroy_all
+Place.destroy_all
 
 names = ['Canni', 'Angela', 'Soroosh']
-names.map{|name| User.create(username: name, password: '1234', password_confirmation: '1234')}
+names.map{|name| User.create(username: name, password: '1234', password_confirmation: '1234', age: rand(20..30))}

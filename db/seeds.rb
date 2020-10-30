@@ -8,5 +8,7 @@
 
 # Trial username
 
-# names = ['Canni', 'Angela', 'Soroosh']
-# names.map{|name| User.create(username: name, password: '1234', password_confirmation: '1234')}
+User.destroy_all
+
+names = ['Canni', 'Angela', 'Soroosh']
+names.map{|name| User.create(username: name, password: '1234', password_confirmation: '1234')}

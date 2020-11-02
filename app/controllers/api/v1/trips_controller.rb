@@ -7,12 +7,22 @@ class Api::V1::TripsController < ApplicationController
     
       def create
         trip = Trip.create(trip_params)
-        render json: trip, status: 201
+        # render json: trip, status: 201
+        if trip.valid?
+            render json: { trip: TripSerializer.new(trip) }, status: :created
+        else
+            render json: { error: 'Failed to create trip' }, status: :not_acceptable
+        end
       end
     
       def update
         @trip.update(trip_params)
-        render json: @trip, status: 200
+        # render json: @trip, status: 200
+        if @trip.valid?
+          render json: { trip: TripSerializer.new(@trip) }, stats: :accepted
+        else
+          render json: { error: 'Failed to update trip' }, status: :not_acceptable
+        end
       end
     
       def destroy
@@ -22,7 +32,7 @@ class Api::V1::TripsController < ApplicationController
       end
     
       def show
-        render json: @trip, status: 200
+        render json: { trip: TripSerializer.new(@trip) }, status: :accepted
       end
     
       private

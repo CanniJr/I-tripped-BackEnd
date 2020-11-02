@@ -16,6 +16,14 @@ class Api::V1::AuthController < ApplicationController
         end
     end
 
+    def auto_login
+        if current_user
+            render json: current_user
+        else
+            render json: {errors: "No User Logged In"}
+        end
+    end
+
     private
 
     def user_login_params

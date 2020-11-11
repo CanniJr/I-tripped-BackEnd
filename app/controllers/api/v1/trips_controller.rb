@@ -7,8 +7,8 @@ class Api::V1::TripsController < ApplicationController
       end
     
       def create
-        # byebug
         @trip = Trip.create(trip_params)
+        # byebug
         # render json: trip, status: 201
         
         if @trip.valid?
@@ -28,12 +28,12 @@ class Api::V1::TripsController < ApplicationController
         end
       end
     
+      #Trip.destroy(id)
       def destroy
+        Trip.destroy(params[:trip][:id])
         # byebug
-        userId = current_user
-          @trip.destroy
           if !@trip.save
-            render json: { success: "Deleted trip" , user_id:userId}, status: :accepted
+            render json: { success: "Deleted trip" , trip: @trip}, status: :accepted
           else
             render json: {error: 'Failed to delete trip'}, status: :not_acceptable
           end

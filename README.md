@@ -4,6 +4,7 @@
 This Backend is created using Ruby-on-Rails
 with JWT Auth for the I tripped! 
 
+Frontend : https://github.com/CanniJr/I-tripped-FrontEnd
 
 
 This README would normally document whatever steps are necessary to get the
